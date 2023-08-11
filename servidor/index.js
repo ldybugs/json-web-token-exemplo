@@ -37,13 +37,18 @@ app.get('/', async function(req, res){
 })
 
 app.post('/logar', (req, res) => {
-  res.send("Você está logado")
+  if(req.body.usuario == 'vivi' && req.body.senha == '123') {
+    res.send ("login feito")
+  }
+  else{
+    res.send ("login recusado")
+  }
 })
 
 app.post('/deslogar', function(req, res) {
   
 })
 
-app.listen(3000, function() {
-  console.log('App de Exemplo escutando na porta 3000!')
+app.listen(3001, function() {
+  console.log('App de Exemplo escutando na porta 3001!')
 });
