@@ -37,7 +37,15 @@ app.get('/', async function(req, res){
 })
 
 app.get('/usuarios/cadastrar', async function(req, res){
-  res.render("usuarios/cadastrar")
+  res.render('usuarios/cadastrar')
+})
+
+app.post('/usuarios/cadastrar', async function(req, res){
+  if(req.body.senha === req.body.csenha) 
+     res.json({mensagem: "Cadastro feito com sucesso!(>᎑<๑)/♡"})
+    else(
+      res.json({mensagem: "As senhas não são iguais!(˶˃ᆺ˂˶)"})
+    )
 })
 
 app.post('/logar', (req, res) => {
@@ -52,7 +60,7 @@ app.post('/logar', (req, res) => {
       token: token
     })
   }
-    res.status(500).json({mensagem: "Login errado"})
+    res.status(500).json({mensagem: "Login inválido!(˶˃ᆺ˂˶)"})
 })
 
 app.post('/deslogar', function(req, res) {
