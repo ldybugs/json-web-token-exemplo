@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <title>Cadastro</title>
@@ -227,22 +228,27 @@
         <div class="formulario">
             
             <div class="box-title">
-              <h2 class="title">✧ Login ✧
-                <p class="subtitle">Entre na sua conta</p>
+              <h2 class="title">✧ Cadastro ✧
+                <p class="subtitle">Cadastre-se agora</p>
               </h2>
             </div>
-            <form action="/logar" method="post">
+            <form action="/usuarios/cadastrar" method="post">
                      
                 <span>
-                    <input type="text" class="input-card" id="nome" name="usuario" placeholder="Usuário" autocomplete="off" required=""/>
+                    <input type="text" class="input-card" id="nome" name="usuario" placeholder="Digite seu usuário" autocomplete="off" required=""/>
                     <label for="usuario"> <i class="icon icon-user-outline"></i> </label>
                 </span>
                 <span>
-                    <input type="password" class="input-card" id="senha" name="senha" placeholder="Senha" autocomplete="off" required=""/>
+                    <input type="password" class="input-card" id="senha" name="senha" placeholder="Digite sua senha" autocomplete="off" required=""/>
                     <label for="senha"> <i class="icon icon-info"></i> </label>
                 </span>
+                <span>
+                  <input type="password" class="input-card" id="senha" name="senha" placeholder=" Confirme sua senha" autocomplete="off" required=""/>
+                  <label for="senha"> <i class="icon icon-info"></i> </label>
+              </span>
                 <div class="box-pulse">
-                     <input type="submit" value="Entrar" class="botao">
+                  
+                     <input type="submit" value="Cadastrar" class="botao">
                 </div>
             </form>
         </div>

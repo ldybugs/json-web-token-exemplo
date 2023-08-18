@@ -37,7 +37,7 @@ app.get('/', async function(req, res){
 })
 
 app.get('/usuarios/cadastrar', async function(req, res){
-  res.render("cadastrar")
+  res.render("usuarios/cadastrar")
 })
 
 app.post('/logar', (req, res) => {
@@ -60,6 +60,6 @@ app.post('/deslogar', function(req, res) {
   res.json({deslogar:true})
 })
 
-app.listen(3001, function() {
+app.listen(3000, function() {
   console.log('App de Exemplo escutando na porta 3000!')
 });
