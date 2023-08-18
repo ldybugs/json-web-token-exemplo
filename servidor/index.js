@@ -40,12 +40,20 @@ app.get('/usuarios/cadastrar', async function(req, res){
   res.render('usuarios/cadastrar')
 })
 
+
 app.post('/usuarios/cadastrar', async function(req, res){
-  if(req.body.senha === req.body.csenha) 
-     res.json({mensagem: "Cadastro feito com sucesso!(>᎑<๑)/♡"})
-    else(
-      res.json({mensagem: "As senhas não são iguais!(˶˃ᆺ˂˶)"})
-    )
+  try {
+    if(req.body.senha === req.body.csenha)
+    await usuario.create(req.body);
+    res.redirect('/usuarios/listar')
+} catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'As senhas não são iguais!✧' });
+}
+})
+
+app.get('/usuarios/listar', async function(req, res){
+ res.json('usuarios')
 })
 
 app.post('/logar', (req, res) => {
