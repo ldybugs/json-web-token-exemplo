@@ -43,9 +43,10 @@ app.get('/usuarios/cadastrar', async function(req, res){
 
 app.post('/usuarios/cadastrar', async function(req, res){
   try {
-    if(req.body.senha === req.body.csenha)
-    await usuario.create(req.body);
-    res.redirect('/usuarios/listar')
+    if(req.body.senha == req.body.csenha){
+      await usuario.create(req.body);
+      res.redirect('/usuarios/listar')
+    }
 } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'As senhas não são iguais!✧' });
@@ -53,7 +54,13 @@ app.post('/usuarios/cadastrar', async function(req, res){
 })
 
 app.get('/usuarios/listar', async function(req, res){
- res.json('usuarios')
+ try {
+  var usuarios = await usuario.findAll();
+  res.render('home', { usuarios });
+} catch (err) {
+  console.error(err);
+  res.status(500).json({ message: 'Ocorreu um erro ao buscar os usuário.' });
+}
 })
 
 app.post('/logar', (req, res) => {
