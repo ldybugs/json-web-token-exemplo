@@ -67,7 +67,7 @@ app.post('/logar', (req, res) => {
   if(req.body.usuario == 'vivi' && req.body.senha == '123') {
     const id = 1;
     const token = jwt.sign({ id }, process.env.SECRET, {
-      expiresIn: 300
+      expiresIn: 3000
     })
     res.cookie('token', token, {httpOnly:true});
     return res.json({
