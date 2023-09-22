@@ -8,7 +8,7 @@ const METODO_DESCRIPTOGRAFIA = 'hex';
 const encrypt = ((text) =>  {
    let cipher = crypto.createCipheriv(ALGORITMO, CHAVE, IV);
    let encrypted = cipher.update(text, 'utf8', METODO_CRIPTOGRAFIA);
-   encrypted += cipher.final(METODO_CRIPTO.GRAFIA);
+   encrypted += cipher.final(METODO_CRIPTOGRAFIA);
    return encrypted;
 });
 
