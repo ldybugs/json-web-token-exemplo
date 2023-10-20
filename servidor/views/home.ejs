@@ -9,10 +9,12 @@
 </head>
 <body>
   <div class="usuario">
+    <div class="usuarioseparado">
   <% banco.forEach((usuario) => { %>
-    <%= usuario.nome %></p>
-    <%= usuario.senha %></p>
+  <p><%= usuario.nome %></p>
+  <p><%= usuario.senha %></p>
   <% }) %>
+    </div>
   <form class="" action="/deslogar" method="post">
     <input type="submit" value="Deslogar">
     </form>

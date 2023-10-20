@@ -45,7 +45,7 @@ app.get('/usuarios/cadastrar', async function(req, res){
 app.post('/usuarios/cadastrar', async function(req, res){
   try { 
     const criptografia = {
-      nome: req.body.name,
+      nome: req.body.nome,
       senha: crypto.encrypt(req.body.senha)
     }
     if(req.body.senha == req.body.csenha){
@@ -68,8 +68,9 @@ app.get('/usuarios/listar', async function(req, res){
 }
 })
 
-app.post('/logar', (req, res) => {
-  if(req.body.usuario == 'vivi' && req.body.senha == '123') {
+app.post('/logar', async (req, res) => {
+  const u = await usuario.findOne({ where: { nome: req.body.nome, senha: crypto.encrypt(req.body.senha) } });
+  if(u) {
     const id = 1;
     const token = jwt.sign({ id }, process.env.SECRET, {
       expiresIn: 3000
