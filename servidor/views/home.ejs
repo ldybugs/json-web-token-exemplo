@@ -8,6 +8,10 @@
   <title>Document</title>
 </head>
 <body>
+  <div class="formulariolistar">
+    <div class="box-title">
+    <h2 class="title">✧ Usuários ✧</h2>
+  </div>
   <div class="usuario">
   <% banco.forEach((usuario) => { %>
         <div class="usuarioseparado">
@@ -19,8 +23,9 @@
   <% }) %>
   <br/>
   <form class="" action="/deslogar" method="post">
-    <input type="submit" value="Deslogar">
+    <input class="botaolistar" type="submit" value="Deslogar">
     </form>
+  </div>
 </div>
  
 </body>
