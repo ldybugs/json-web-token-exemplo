@@ -5,16 +5,26 @@ const jwt = require('jsonwebtoken');
 var { expressjwt: expressJWT } = require("express-jwt");
 const cors = require('cors');
 
+const corsOpcoes = {
+  //Cliente que fará o acesso//
+  origin: "http://localhost:3000",
+  //Metodos que o cliente poderá executar//
+  methods: "GET, PUT, POST, DELETE",
+  //autoriza todo tipo de conteudo//
+  allowedHeaders: "Content-Type, Authorization",
+  credentials: true
+}
+
 var cookieParser = require('cookie-parser')
 
 const express = require('express');
 const { usuario } = require('./models');
 
 const app = express();
+//é uma portinha no servidor para o cliente//
+app.use(cors(corsOpcoes))
 
 app.set('view engine', 'ejs');
-
-app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
@@ -61,7 +71,7 @@ app.post('/usuarios/cadastrar', async function(req, res){
 app.get('/usuarios/listar', async function(req, res){
  try {
   var banco = await usuario.findAll();
-  res.render('home', { banco });
+  res.json(banco);
 } catch (err) {
   console.error(err);
   res.status(500).json({ message: 'Ocorreu um erro ao buscar os usuário.' });
@@ -75,11 +85,14 @@ app.post('/logar', async (req, res) => {
     const token = jwt.sign({ id }, process.env.SECRET, {
       expiresIn: 3000
     })
-    res.cookie('token', token, {httpOnly:true});
-    return res.json({
-      usuario: req.body.usuario,
+    res.cookie('token', token, {httpOnly:true}).json({
+      nome: u.nome,
       token: token
     })
+    /*/ return res.json({
+      usuario: req.body.usuario,
+      token: token
+    })/*/
   }
     res.status(500).json({mensagem: "Login inválido!(˶˃ᆺ˂˶)"})
 })
@@ -89,6 +102,6 @@ app.post('/deslogar', function(req, res) {
   res.json({deslogar:true})
 })
 
-app.listen(3000, function() {
+app.listen(3001, function() {
   console.log('App de Exemplo escutando na porta 3000!')
 });

@@ -1,0 +1,41 @@
+body{
+    background-color: #4F3068;
+    font-family: monospace;
+}
+
+div{
+    color: #ffffff;
+    font-size: 16px;
+}
+
+li {
+    list-style: none; 
+    margin-right: 30px;
+    display: inline;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    background-color: #330F52;
+    height: 50px;
+    margin: 0;
+    padding-top: 30px;
+    font-size: 16px;
+
+}
+ 
+li a {
+    padding: 10px 20px; 
+    margin:0;
+    border: 1px solid white; 
+    background:  #330F52;
+    text-decoration: none;
+    color:#FFF;
+    border-radius: 5px;
+}
+li a:hover {
+    background: #7846A1;
+    color: white; 
+    border-color: white;
+}
