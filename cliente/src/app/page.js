@@ -37,7 +37,7 @@ export default function Login() {
       <div className={styles.title}>Login</div>
         
         <div className={styles.ic1}>
-        <input id="email" className={styles.input} type="email" placeholder=" " onChange={(e) => { setUser({ ...user, email: e.target.value }) }}></input>
+        <input id="nome" className={styles.input} type="text"  name="nome" placeholder=" " onChange={(e) => { setUser({ ...user, name: e.target.value }) }}></input>
         <div className={styles.cut}></div>
         <label for="email" className={styles.placeholder}>Email</label>
       </div>

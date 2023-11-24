@@ -1,9 +1,9 @@
 'use server'
 
-const url = "https://aula-17-10-one.vercel.app"
+const url = "http://localhost:3001"
 
 const getUserAuthenticated = async (user) => {
-    const responseOfApi = await fetch(url + "/user/authenticated",
+    const responseOfApi = await fetch(url + "/logar",
     {
         method:"POST",
         headers:{ "Content-type":"Application/json"},
@@ -20,7 +20,7 @@ const postUser = async (user) => {
         console.log(user)
         const responseOfApi = await fetch(url + "/user", {
             method: 'POST',
-            headers: { 'Content-type': 'Application/json' },
+            headers: { 'Content-Type': 'Application/json' },
            body: JSON.stringify(user) 
         });
         const userSave = await responseOfApi.json();
@@ -63,4 +63,4 @@ const updateUser = async (user, id) => {
     }
 }
 
-    export { getUsers, getUserAuthenticated, postUser };
+    export { getUsers, getUserAuthenticated, postUser, updateUser };

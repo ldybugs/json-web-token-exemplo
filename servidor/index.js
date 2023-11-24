@@ -79,9 +79,9 @@ app.get('/usuarios/listar', async function(req, res){
 })
 
 app.post('/logar', async (req, res) => {
-  const u = await usuario.findOne({ where: { nome: req.body.nome, senha: crypto.encrypt(req.body.senha) } });
+  const u = await usuario.findOne({ where: { nome: req.body.name, senha: crypto.encrypt(req.body.password) } });
   if(u) {
-    const id = 1;
+    const id = u.id;
     const token = jwt.sign({ id }, process.env.SECRET, {
       expiresIn: 3000
     })
@@ -89,12 +89,13 @@ app.post('/logar', async (req, res) => {
       nome: u.nome,
       token: token
     })
+    //return res.json(u)
     /*/ return res.json({
       usuario: req.body.usuario,
       token: token
     })/*/
   }
-    res.status(500).json({mensagem: "Login inválido!(˶˃ᆺ˂˶)"})
+    //res.status(500).json({mensagem: "Login inválido!(˶˃ᆺ˂˶)"})
 })
 
 app.post('/deslogar', function(req, res) {
