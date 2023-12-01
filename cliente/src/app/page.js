@@ -10,7 +10,7 @@ import styles from './page.module.css'
 
 export default function Login() {
   const [user, setUser] = useState({
-    email: '', password: '',
+    nome: '', senha: '',
   });
   const { push, refresh } = useRouter();
 
@@ -37,12 +37,12 @@ export default function Login() {
       <div className={styles.title}>Login</div>
         
         <div className={styles.ic1}>
-        <input id="nome" className={styles.input} type="text"  name="nome" placeholder=" " onChange={(e) => { setUser({ ...user, name: e.target.value }) }}></input>
+        <input id="nome" className={styles.input} type="text"  name="nome" placeholder=" " onChange={(e) => { setUser({ ...user, nome: e.target.value }) }}></input>
         <div className={styles.cut}></div>
-        <label for="email" className={styles.placeholder}>Email</label>
+        <label for="nome" className={styles.placeholder}>Nome</label>
       </div>
       <div className={styles.ic2}>
-        <input id="senha" className={styles.input} type="password" placeholder=" " onChange={(e) => { setUser({ ...user, password: e.target.value }) }}></input>
+        <input id="senha" className={styles.input} type="password" placeholder=" " onChange={(e) => { setUser({ ...user, senha: e.target.value }) }}></input>
         <div className={styles.cut}></div>
         <label for="senha" className={styles.placeholder}>Senha</label>
       </div>

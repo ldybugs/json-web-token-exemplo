@@ -5,9 +5,9 @@ export default async function ListUsers({users}) {
         <center>
         {users?.map((user,index) =>
          <p key={index}>
-            {user.name}
+            {user.nome}
             <br/>
-            {user.password}
+            {user.senha}
          </p>
         )}
         </center>

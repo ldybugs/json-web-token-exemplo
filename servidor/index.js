@@ -79,13 +79,13 @@ app.get('/usuarios/listar', async function(req, res){
 })
 
 app.post('/logar', async (req, res) => {
-  const u = await usuario.findOne({ where: { nome: req.body.name, senha: crypto.encrypt(req.body.password) } });
+  const u = await usuario.findOne({ where: { nome: req.body.nome, senha: crypto.encrypt(req.body.senha) } });
   if(u) {
     const id = u.id;
     const token = jwt.sign({ id }, process.env.SECRET, {
       expiresIn: 3000
     })
-    res.cookie('token', token, {httpOnly:true}).json({
+    return res.cookie('token', token, {httpOnly:true}).json({
       nome: u.nome,
       token: token
     })

@@ -8,7 +8,7 @@ import styles from './register.css'
 
 export default function Register() {
   const [registro, setRegistro] = useState({
-    name: '', email: '', password: ''
+    nome: '', senha: ''
   });
 
   const { push, refresh } = useRouter();
@@ -44,19 +44,19 @@ export default function Register() {
       <div class="title">Cadastrar</div>
     
       <div class="input-container ic1">
-        <input id="nome" class="input" type="text" placeholder=" "  onChange={(e) => { setRegistro({ ...registro, name: e.target.value }) }}/>
+        <input id="nome" class="input" type="text" name="nome" placeholder=" "  onChange={(e) => { setRegistro({ ...registro, nome: e.target.value }) }}/>
         <div class="cut"></div>
         <label for="nome" class="placeholder">Nome</label>
       </div>
       <div class="input-container ic2">
-        <input id="email" class="input" type="email" placeholder=" "  onChange={(e) => { setRegistro({ ...registro, email: e.target.value }) }}/>
-        <div class="cut"></div>
-        <label for="email" class="placeholder">Email</label>
+        <input id="password" class="input" type="password" name="senha"placeholder=" "  onChange={(e) => { setRegistro({ ...registro, senha: e.target.value }) }}/>
+        <div class="cut cut-short"></div>
+        <label for="senha" class="placeholder">Senha</label>
       </div>
       <div class="input-container ic2">
-        <input id="password" class="input" type="password" placeholder=" "  onChange={(e) => { setRegistro({ ...registro, password: e.target.value }) }}/>
+        <input id="password" class="input" type="password" name="csenha" placeholder=" "  onChange={(e) => { setRegistro({ ...registro, csenha: e.target.value }) }}/>
         <div class="cut cut-short"></div>
-        <label for="email" class="placeholder">Senha</label>
+        <label for="senha" class="placeholder">Confirmar senha</label>
       </div>
       <button class="submit">Cadastrar</button>
       <ToastContainer />
